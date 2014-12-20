@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.qiheng.hibernate.Student" table="student">
+		
+		<id name="id" column="id" type="string">
+			<generator class="uuid"></generator>
+		</id>
+		
+		<property name="student_name" column="student_name" type="string"></property>
+		<property name="timestamp" column="timestamp" type="timestamp"></property>
+		<set name="courses" cascade="save-update" table="student_course">
+			<key column="student_id"></key>
+			<many-to-many class="com.qiheng.hibernate.Course" column="course_id"></many-to-many>
+		</set>
+		
+	</class>
+
+</hibernate-mapping>
